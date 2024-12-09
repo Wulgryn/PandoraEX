@@ -1,6 +1,6 @@
 <Project Name="PandoraEX" Version="0.0.1" Author="Wulgryn">
   <Description>Extension project. Contains useful stuffs.</Description>
-  <Properties OutputName="PandoraEX" RebuildSourceFileOnWarning="true" CopyHeaders="false" CopyAssets="notDebug">
+  <Properties OutputName="PandoraEX" RebuildSourceFileOnWarning="true" CopyHeaders="false" CopyAssets="notDebug" ClearOutputFolderBeforeBuild="notDebug">
     <RebuildSourceFileOnWarning.Values DefaultValueIndex="0">
       <Value>true</Value>
       <Value>false</Value>
@@ -81,6 +81,16 @@
       </Values>
       <Value>StaticLibrary</Value>
     </OutputType>
+    <ClearOutputFolderBeforeBuild.Values DefaultValueIndex="3">
+      <Value>onDebug</Value>
+      <Value>onRelease</Value>
+      <Value>onPublish</Value>
+      <Value>notDebug</Value>
+      <Value>notRelease</Value>
+      <Value>notPublish</Value>
+      <Value>never</Value>
+      <Value>always</Value>
+    </ClearOutputFolderBeforeBuild.Values>
   </Properties>
   <Datas>
     <Data name="debug_compile_flags">-g -Og -Wall -Wextra -march=native -mtune=native -fno-stack-protector {std} {arch} -c {is_shared} {source_file} -o {output_obj_file} {headers} {defines}</Data>

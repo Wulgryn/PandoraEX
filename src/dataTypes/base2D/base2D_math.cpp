@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <algorithm>
+#include <functional>
 
 using namespace PandoraEX;
 
@@ -220,8 +221,8 @@ T &Base2D<T>::invert()
 template <class T>
 T &Base2D<T>::negate()
 {
-    x = -x;
-    y = -y;
+    x = std::negate<double>()(x);
+    y = std::negate<double>()(y);
     return static_cast<T&>(*this);
 }
 

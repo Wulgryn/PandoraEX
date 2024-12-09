@@ -5,7 +5,11 @@
 
 namespace PandoraEX
 {
-    struct Vector2 : public Base2D<Vector2> {};
+    struct Vector2 : public Base2D<Vector2> {
+        Vector2(double xy = 0.0) : Base2D<Vector2>(xy) {}
+        Vector2(double x, double y) : Base2D<Vector2>(x, y) {}
+    };
 }
+
 
 #endif // VECTOR2_HPP
