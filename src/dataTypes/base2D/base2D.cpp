@@ -1,5 +1,5 @@
-#include "base2D_base.hpp"
-#include "base2D_typenames.hpp"
+#include "base2D.hpp"
+#include "typenames.hpp"
 
 using namespace PandoraEX;
 
@@ -56,7 +56,7 @@ Base2D<T>::Base2D(double x, double y) : x(x), y(y)
 template <class T>
 T Base2D<T>::clone() const
 {
-    return static_cast<T>(Base2D<T>(x, y));
+    return T(x, y);
 }
 
 template <class T>

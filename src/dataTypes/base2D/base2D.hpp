@@ -164,7 +164,7 @@ namespace PandoraEX
         /// @brief Clamps x and y between min and max.
         /// @param min The minimum value.
         /// @param max The maximum value.
-        /// @return T The object.
+        /// @return T The object. 
         T &clamp(const double &min, const double &max);
 
 /**=======================================================================================================================*

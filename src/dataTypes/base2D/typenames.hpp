@@ -1,7 +1,7 @@
 #ifndef BASE2D_TYPENAMES_HPP
 #define BASE2D_TYPENAMES_HPP
 
-#include "base2D_base.hpp"
+#include "base2D.hpp"
 
 #include "../dataTypes2D.hpp"
 

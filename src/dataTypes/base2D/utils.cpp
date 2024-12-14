@@ -1,5 +1,5 @@
-#include "base2D_base.hpp"
-#include "base2D_typenames.hpp"
+#include "base2D.hpp"
+#include "typenames.hpp"
 
 #include <iostream>
 

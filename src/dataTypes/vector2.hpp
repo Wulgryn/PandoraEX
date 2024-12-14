@@ -1,7 +1,7 @@
 #ifndef VECTOR2_HPP
 #define VECTOR2_HPP
 
-#include "base2D/base2D_base.hpp"
+#include "base2D/base2D.hpp"
 
 namespace PandoraEX
 {
@@ -10,6 +10,5 @@ namespace PandoraEX
         Vector2(double x, double y) : Base2D<Vector2>(x, y) {}
     };
 }
-
 
 #endif // VECTOR2_HPP

@@ -1,5 +1,5 @@
-#include "base2D_base.hpp"
-#include "base2D_typenames.hpp"
+#include "base2D.hpp"
+#include "typenames.hpp"
 
 #include <cmath>
 
@@ -64,7 +64,7 @@ T &Base2D<T>::operator-(const double &b2)
 template <class T>
 T Base2D<T>::operator-() const
 {
-    return static_cast<T>(Base2D<T>(-x, -y));
+    return T(-x, -y);
 }
 
 template <class T>

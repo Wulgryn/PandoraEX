@@ -1,14 +1,10 @@
 <Project Name="PandoraEX" Version="0.0.1" Author="Wulgryn">
   <Description>Extension project. Contains useful stuffs.</Description>
-  <Properties OutputName="PandoraEX" RebuildSourceFileOnWarning="true" CopyHeaders="false" CopyAssets="notDebug" ClearOutputFolderBeforeBuild="notDebug">
+  <Properties OutputName="PandoraEX" RebuildSourceFileOnWarning="true" CopyAssets="notDebug" ClearOutputFolderBeforeBuild="notDebug">
     <RebuildSourceFileOnWarning.Values DefaultValueIndex="0">
       <Value>true</Value>
       <Value>false</Value>
     </RebuildSourceFileOnWarning.Values>
-    <CopyHeaders.Values DefaultValueIndex="1">
-      <Value>true</Value>
-      <Value>false</Value>
-    </CopyHeaders.Values>
     <CopyAssets.Values DefaultValueIndex="3">
       <Value>onDebug</Value>
       <Value>onRelease</Value>
