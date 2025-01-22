@@ -1,251 +1,133 @@
-#include "base2D.hpp"
+#include "math.hpp"
 #include "typenames.hpp"
 
+#include <iostream>
+#include <cstring>
 #include <cmath>
-#include <algorithm>
-#include <functional>
 
-using namespace PandoraEX;
-
-// struct Base2D
-// {
-//     double x, y;
-//     double length() const
-//     {
-//         return sqrt(x * x + y * y);
-//     }
-
-//     double distance(const T &b2)
-//     {
-//         return sqrt(pow(b2.x - x, 2) + pow(b2.y - y, 2));
-//     }
-
-//     double dot(const T &b2)
-//     {
-//         return x * b2.x + y * b2.y;
-//     }
-
-//     double cross(const T &b2)
-//     {
-//         return x * b2.y - y * b2.x;
-//     }
-
-//     T &min(const T &b2)
-//     {
-//         x = std::min(x, b2.x);
-//         y = std::min(y, b2.y);
-//         return static_cast<T&>(*this);
-//     }
-
-//     T &min(const double &b2)
-//     {
-//         x = std::min(x, b2);
-//         y = std::min(y, b2);
-//         return static_cast<T&>(*this);
-//     }
-
-//     T &max(const T &b2)
-//     {
-//         x = std::max(x, b2.x);
-//         y = std::max(y, b2.y);
-//         return static_cast<T&>(*this);
-//     }
-
-//     T &max(const double &b2)
-//     {
-//         x = std::max(x, b2);
-//         y = std::max(y, b2);
-//         return static_cast<T&>(*this);
-//     }
-
-//     T &abs()
-//     {
-//         x = std::abs(x);
-//         y = std::abs(y);
-//         return static_cast<T&>(*this);
-//     }
-
-//     T &ceil()
-//     {
-//         x = std::ceil(x);
-//         y = std::ceil(y);
-//         return static_cast<T&>(*this);
-//     }
-
-//     T &floor()
-//     {
-//         x = std::floor(x);
-//         y = std::floor(y);
-//         return static_cast<T&>(*this);
-//     }
-
-//     T &round()
-//     {
-//         x = std::round(x);
-//         y = std::round(y);
-//         return static_cast<T&>(*this);
-//     }
-
-//     T &invert()
-//     {
-//         x = -x;
-//         y = -y;
-//         return static_cast<T&>(*this);
-//     }
-
-//     T &negate()
-//     {
-//         x = -x;
-//         y = -y;
-//         return static_cast<T&>(*this);
-//     }
-
-//     T &avg(const T &b2)
-//     {
-//         x = (x + b2.x) / 2;
-//         y = (y + b2.y) / 2;
-//         return static_cast<T&>(*this);
-//     }
-
-//     T &avg(const double &b2)
-//     {
-//         x = (x + b2) / 2;
-//         y = (y + b2) / 2;
-//         return static_cast<T&>(*this);
-//     }
-
-//     T &clamp(const T &min, const T &max)
-//     {
-//         x = std::clamp(x, min.x, max.x);
-//         y = std::clamp(y, min.y, max.y);
-//         return static_cast<T&>(*this);
-//     }
-// };
+using namespace PandoraEX::Base2D;
 
 template <class T>
-double Base2D<T>::length() const
+Math<T>::Math(double &val1, double &val2) : val1(val1), val2(val2)
 {
-    return sqrt(x * x + y * y);
+    static_assert(std::is_base_of<Math<T>, T>::value, "T must derive from Base2D::Math<T>");
 }
 
 template <class T>
-double Base2D<T>::distance(const T &b2)
+T &Math<T>::min(const T &b2)
 {
-    return sqrt(pow(b2.x - x, 2) + pow(b2.y - y, 2));
+    val1 = std::min(val1, ((Math)b2).val1);
+    val2 = std::min(val2, ((Math)b2).val2);
+    return static_cast<T &>(*this);
 }
 
 template <class T>
-double Base2D<T>::dot(const T &b2)
+T &Math<T>::min(const double &b2)
 {
-    return x * b2.x + y * b2.y;
+    val1 = std::min(val1, b2);
+    val2 = std::min(val2, b2);
+    return static_cast<T &>(*this);
 }
 
 template <class T>
-double Base2D<T>::cross(const T &b2)
+T &Math<T>::max(const T &b2)
 {
-    return x * b2.y - y * b2.x;
+    val1 = std::max(val1, ((Math)b2).val1);
+    val2 = std::max(val2, ((Math)b2).val2);
+    return static_cast<T &>(*this);
 }
 
 template <class T>
-T &Base2D<T>::min(const T &b2)
+T &Math<T>::max(const double &b2)
 {
-    x = std::min(x, b2.x);
-    y = std::min(y, b2.y);
+    val1 = std::max(val1, b2);
+    val2 = std::max(val2, b2);
+    return static_cast<T &>(*this);
+}
+
+template <class T>
+T &Math<T>::abs()
+{
+    val1 = std::abs(val1);
+    val2 = std::abs(val2);
+    return static_cast<T &>(*this);
+}
+
+template <class T>
+T &Math<T>::ceil()
+{
+    val1 = std::ceil(val1);
+    val2 = std::ceil(val2);
+    return static_cast<T &>(*this);
+}
+
+template <class T>
+T &Math<T>::floor()
+{
+    val1 = std::floor(val1);
+    val2 = std::floor(val2);
+    return static_cast<T &>(*this);
+}
+
+template <class T>
+T &Math<T>::round()
+{
+    val1 = std::round(val1);
+    val2 = std::round(val2);
+    return static_cast<T &>(*this);
+}
+
+template <class T>
+T &Math<T>::invert()
+{
+    val1 = -val1;
+    val2 = -val2;
+    return static_cast<T &>(*this);
+}
+
+template <class T>
+T& Math<T>::reciprocal()
+{
+    val1 = 1 / val1;
+    val2 = 1 / val2;
     return static_cast<T&>(*this);
 }
 
 template <class T>
-T &Base2D<T>::min(const double &b2)
+T &Math<T>::negate()
 {
-    x = std::min(x, b2);
-    y = std::min(y, b2);
-    return static_cast<T&>(*this);
+    uint64_t bits;
+    std::memcpy(&bits, &val1, sizeof(double));
+    bits = ~bits;
+    std::memcpy(&val1, &bits, sizeof(double));
+    
+    std::memcpy(&bits, &val2, sizeof(double));
+    bits = ~bits;
+    std::memcpy(&val2, &bits, sizeof(double));
+
+    return static_cast<T &>(*this);
 }
 
 template <class T>
-T &Base2D<T>::max(const T &b2)
+uint64_t Math<T>::bits(int index) const
 {
-    x = std::max(x, b2.x);
-    y = std::max(y, b2.y);
-    return static_cast<T&>(*this);
+    uint64_t bits;
+    std::memcpy(&bits, index == 0 ? &val1 : &val2, sizeof(double));
+    return bits;
 }
 
 template <class T>
-T &Base2D<T>::max(const double &b2)
+T &Math<T>::clamp(const T &min, const T &max)
 {
-    x = std::max(x, b2);
-    y = std::max(y, b2);
-    return static_cast<T&>(*this);
+    val1 = std::clamp(val1, ((Math)min).val1, ((Math)max).val1);
+    val2 = std::clamp(val2, ((Math)min).val2, ((Math)max).val2);
+    return static_cast<T &>(*this);
 }
 
 template <class T>
-T &Base2D<T>::abs()
+T &Math<T>::clamp(const double &min, const double &max)
 {
-    x = std::abs(x);
-    y = std::abs(y);
-    return static_cast<T&>(*this);
-}
-
-template <class T>
-T &Base2D<T>::ceil()
-{
-    x = std::ceil(x);
-    y = std::ceil(y);
-    return static_cast<T&>(*this);
-}
-
-template <class T>
-T &Base2D<T>::floor()
-{
-    x = std::floor(x);
-    y = std::floor(y);
-    return static_cast<T&>(*this);
-}
-
-template <class T>
-T &Base2D<T>::round()
-{
-    x = std::round(x);
-    y = std::round(y);
-    return static_cast<T&>(*this);
-}
-
-template <class T>
-T &Base2D<T>::invert()
-{
-    x = -x;
-    y = -y;
-    return static_cast<T&>(*this);
-}
-
-template <class T>
-T &Base2D<T>::negate()
-{
-    x = std::negate<double>()(x);
-    y = std::negate<double>()(y);
-    return static_cast<T&>(*this);
-}
-
-template <class T>
-T &Base2D<T>::avg(const T &b2)
-{
-    x = (x + b2.x) / 2;
-    y = (y + b2.y) / 2;
-    return static_cast<T&>(*this);
-}
-
-template <class T>
-T &Base2D<T>::avg(const double &b2)
-{
-    x = (x + b2) / 2;
-    y = (y + b2) / 2;
-    return static_cast<T&>(*this);
-}
-
-template <class T>
-T &Base2D<T>::clamp(const T &min, const T &max)
-{
-    x = std::clamp(x, min.x, max.x);
-    y = std::clamp(y, min.y, max.y);
-    return static_cast<T&>(*this);
+    val1 = std::clamp(val1, min, max);
+    val2 = std::clamp(val2, min, max);
+    return static_cast<T &>(*this);
 }

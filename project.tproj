@@ -75,7 +75,7 @@
         <Value>DynamicLibrary</Value>
         <Value>StaticLibrary</Value>
       </Values>
-      <Value>StaticLibrary</Value>
+      <Value>DynamicLibrary</Value>
     </OutputType>
     <ClearOutputFolderBeforeBuild.Values DefaultValueIndex="3">
       <Value>onDebug</Value>

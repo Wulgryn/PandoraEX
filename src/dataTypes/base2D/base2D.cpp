@@ -1,54 +1,12 @@
 #include "base2D.hpp"
 #include "typenames.hpp"
 
-using namespace PandoraEX;
+#include <type_traits>
 
-// struct Base2D
-// {
-//     double x, y;
-//     //Base2D(double xy) : x(xy), y(xy) {}
-//     Base2D(double x, double y) : x(x), y(y) {}
-
-//     T clone() const
-//     {
-//         return Base2D(x, y);
-//     }
-
-//     T &set(double x, double y)
-//     {
-//         this->x = x;
-//         this->y = y;
-//         return *this;
-//     }
-
-//     T &operator=(const T &b2)
-//     {
-//         x = b2.x;
-//         y = b2.y;
-//         return *this;
-//     }
-
-//     T &operator=(const double &b2)
-//     {
-//         x = b2;
-//         y = b2;
-//         return *this;
-//     }
-
-//     double operator[](const int &index)
-//     {
-//         return index == 0 ? x : y;
-//     }
-// };
+using namespace PandoraEX::Base2D;
 
 template <class T>
-Base2D<T>::Base2D(double xy) : x(xy), y(xy)
-{
-    static_assert(std::is_base_of<Base2D<T>, T>::value, "T must derive from Base2D<T>");
-}
-
-template <class T>
-Base2D<T>::Base2D(double x, double y) : x(x), y(y)
+Base2D<T>::Base2D(double &val1, double &val2) : val1(val1), val2(val2)
 {
     static_assert(std::is_base_of<Base2D<T>, T>::value, "T must derive from Base2D<T>");
 }
@@ -56,35 +14,33 @@ Base2D<T>::Base2D(double x, double y) : x(x), y(y)
 template <class T>
 T Base2D<T>::clone() const
 {
-    return T(x, y);
+    return T(val1, val2);
 }
 
 template <class T>
-T &Base2D<T>::set(double x, double y)
+T &Base2D<T>::set(double &x, double &y)
 {
-    this->x = x;
-    this->y = y;
-    return static_cast<T&>(*this);
-}
-
-template <class T>
-T &Base2D<T>::operator=(const T &b2)
-{
-    x = b2.x;
-    y = b2.y;
+    this->val1 = x;
+    this->val2 = y;
     return static_cast<T&>(*this);
 }
 
 template <class T>
 T &Base2D<T>::operator=(const double &b2)
 {
-    x = b2;
-    y = b2;
+    val1 = b2;
+    val2 = b2;
     return static_cast<T&>(*this);
 }
 
 template <class T>
-double Base2D<T>::operator[](const int &index)
+double Base2D<T>::getVal1() const
 {
-    return index == 0 ? x : y;
+    return val1;
+}
+
+template <class T>
+double Base2D<T>::getVal2() const
+{
+    return val2;
 }

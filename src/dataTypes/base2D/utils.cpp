@@ -1,26 +1,33 @@
-#include "base2D.hpp"
+#include "utils.hpp"
 #include "typenames.hpp"
 
 #include <iostream>
-
 using namespace std;
+
 using namespace PandoraEX;
+using namespace PandoraEX::Base2D;
 
-template <class T>
-void Base2D<T>::print() const
+Utils::Utils(double &val1, double&val2) : val1(val1), val2(val2)
 {
-    std::cout << "x: " << x << ", y: " << y << std::endl;
+    
 }
 
-template <class T>
-void Base2D<T>::print(const char *msg) const
+void Utils::print() const
 {
-    std::cout << msg << " x: " << x << ", y: " << y << std::endl;
+    std::cout << "x: " << val1 << ", y: " << val2 << std::endl;
 }
 
-template <class T>
-std::string Base2D<T>::toString() const
+void Utils::print(const String &msg) const
 {
-    return "x: " + std::to_string(x) + ", y: " + std::to_string(y);
+    /* ADD: reference to values
+     *+ *=================================ADD===================================
+     *+ * DESCRIPTION: example print("this is my X: {val1}, and this is my Y: {val2}"), or {0},{1}... as in C#
+     *+ *=======================================================================
+     *+ */
+    std::cout << msg << " x: " << val1 << ", y: " << val2 << std::endl;
 }
 
+String Utils::toString() const
+{
+    return "x: " + std::to_string(val1) + ", y: " + std::to_string(val2);
+}
