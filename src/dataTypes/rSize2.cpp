@@ -8,13 +8,9 @@ RSize2::RSize2(double width, double height) : Size2D()
     this->height = height;
 }
 
-RSize2::RSize2(double width_height) : RSize2(width_height, width_height)
-{
-}
+RSize2::RSize2(double width_height) : RSize2(width_height, width_height) {}
 
-RSize2::RSize2() : RSize2(0, 0)
-{
-}
+RSize2::RSize2() : RSize2(0, 0) {}
 
 double RSize2::getWidth()
 {

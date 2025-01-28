@@ -2,16 +2,10 @@
 
 using namespace PandoraEX;
 
-Size2 &Size2::operator=(const Base2D &b2)
+Size2 &Size2::operator=(const Size2 &b2)
 {
-    width = b2.getVal1();
-    height = b2.getVal2();
-    return *this;
-}
-
-Size2 &Size2::operator=(const double &b2)
-{
-    width = height = b2;
+    width = b2.width;
+    height = b2.height;
     return *this;
 }
 

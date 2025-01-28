@@ -1,6 +1,6 @@
 #ifndef BASE2D_UTILS_HPP
 #define BASE2D_UTILS_HPP
-
+#pragma once
 #include "../string.hpp"
 
 /* ADD: descriptions
@@ -22,7 +22,7 @@ namespace PandoraEX::Base2D
         PandoraEX::String toString() const;
 
     private:
-        double &val1, &val2;
+        double &_val1, &_val2;
     };
 }
 #endif // BASE2D_UTILS_HPP

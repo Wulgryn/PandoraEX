@@ -1,63 +1,45 @@
-#ifndef SIZE_HPP
-#define SIZE_HPP
+#ifndef VECTOR2_HPP
+#define VECTOR2_HPP
 
+#include "base2D/primitives/vector2D.hpp"
 #include "base2D/math.hpp"
 #include "base2D/transform.hpp"
-#include "base2D/primitives/size2D.hpp"
 
 namespace PandoraEX
 {
-/* [ ] FIX: fix comments
- *& *================================FIX====================================
- *& * DESCRIPTION: fix the style of the comments, and the names from x,y to val1, val2
- *& * HINT: highlight val1 and val2 with ``
- *& *=======================================================================
- *& */
-
-/* ADD: descriptions
- *+ *=================================ADD===================================
- *+ * DESCRIPTION: add descriptions
- *+ *=======================================================================
- *+ */
-
-    struct Size2 : public Base2D::Size2D<Size2>, Base2D::Math<Size2>, Base2D::Transform<Size2>
+    struct Vector2 : public Base2D::Math<Vector2>, Base2D::Transform<Vector2>, Base2D::Vector2D<Vector2>
     {
-        Size2();
-        Size2(double width_height);
-        Size2(double width, double height);
-    
+        Vector2();
+        Vector2(double xy);
+        Vector2(double x, double y);
+
         using Base2D::operator=;
-        Size2 &operator=(const Size2 &b2);
+        Vector2 &operator=(const Vector2 &b2);
 
-        /// @brief Index operator.
-        /// @param index The index to get. 0 for val1, 1 for val2.
-        /// @return double The value at the index.
-        /// @note 0 for val1, otherwise val2.
         double &operator[](const int &index);
-
 /**=======================================================================================================================*
 **                                                  REGION SIZE2 OP+
 *========================================================================================================================*/
 #pragma region SIZE2 OP+
 
         template <class U>
-        Size2 operator+(const Base2D<U> &op) const
+        Vector2 operator+(const Base2D<U> &op) const
         {
-            return Size2(width + op.getVal1(), height + op.getVal2());
+            return Vector2(x + op.getVal1(), y + op.getVal2());
         }
-        Size2 operator+(const double &val) const;
+        Vector2 operator+(const double &val) const;
 
         template <class U>
-        Size2 &operator+=(const Base2D<U> &b2)
+        Vector2 &operator+=(const Base2D<U> &b2)
         {
-            width += b2.getVal1();
-            height += b2.getVal2();
+            x += b2.getVal1();
+            y += b2.getVal2();
             return *this;
         }
-        Size2 &operator+=(const double &b2);
+        Vector2 &operator+=(const double &b2);
 
-        Size2 &operator++();
-        Size2 &operator++(int);
+        Vector2 &operator++();
+        Vector2 &operator++(int);
 
 /**=======================================================================================================================*
  **                                           END OF REGION SIZE2 OP+
@@ -70,24 +52,24 @@ namespace PandoraEX
 #pragma region SIZE2 OP - -
 
         template <class U>
-        Size2 operator-(const Base2D<U> &b2) const
+        Vector2 operator-(const Base2D<U> &b2) const
         {
-            return Size2(width - b2.getVal1(), height - b2.getVal2());
+            return Vector2(x - b2.getVal1(), y - b2.getVal2());
         }
-        Size2 operator-(const double &b2) const;
-        Size2 operator-() const;
+        Vector2 operator-(const double &b2) const;
+        Vector2 operator-() const;
 
         template <class U>
-        Size2 &operator-=(const Base2D<U> &b2)
+        Vector2 &operator-=(const Base2D<U> &b2)
         {
-            width -= b2.getVal1();
-            height -= b2.getVal2();
+            x -= b2.getVal1();
+            y -= b2.getVal2();
             return *this;
         }
-        Size2 &operator-=(const double &b2);
+        Vector2 &operator-=(const double &b2);
 
-        Size2 &operator--();
-        Size2 &operator--(int);
+        Vector2 &operator--();
+        Vector2 &operator--(int);
 
 /**=======================================================================================================================*
  **                                           END OF REGION SIZE2 OP-
@@ -100,20 +82,20 @@ namespace PandoraEX
 #pragma region SIZE2 OP*
 
         template <class U>
-        Size2 operator*(const Base2D<U> &b2) const
+        Vector2 operator*(const Base2D<U> &b2) const
         {
-            return Size2(width * b2.getVal1(), height * b2.getVal2());
+            return Vector2(x * b2.getVal1(), y * b2.getVal2());
         }
-        Size2 operator*(const double &b2) const;
+        Vector2 operator*(const double &b2) const;
 
         template <class U>
-        Size2 &operator*=(const Base2D<U> &b2)
+        Vector2 &operator*=(const Base2D<U> &b2)
         {
-            width *= b2.getVal1();
-            height *= b2.getVal2();
+            x *= b2.getVal1();
+            y *= b2.getVal2();
             return *this;
         }
-        Size2 &operator*=(const double &b2);
+        Vector2 &operator*=(const double &b2);
 
 /**=======================================================================================================================*
  **                                           END OF REGION SIZE2 OP*
@@ -126,20 +108,20 @@ namespace PandoraEX
 #pragma region SIZE2 OP/
 
         template <class U>
-        Size2 operator/(const Base2D<U> &b2) const
+        Vector2 operator/(const Base2D<U> &b2) const
         {
-            return Size2(width / b2.getVal1(), height / b2.getVal2());
+            return Size2(x / b2.getVal1(), y / b2.getVal2());
         }
-        Size2 operator/(const double &b2) const;
+        Vector2 operator/(const double &b2) const;
 
         template <class U>
-        Size2 &operator/=(const Base2D<U> &b2)
+        Vector2 &operator/=(const Base2D<U> &b2)
         {
-            width /= b2.getVal1();
-            height /= b2.getVal2();
+            x /= b2.getVal1();
+            y /= b2.getVal2();
             return *this;
         }
-        Size2 &operator/=(const double &b2);
+        Vector2 &operator/=(const double &b2);
 
 /**=======================================================================================================================*
  **                                           END OF REGION SIZE2 OP/
@@ -148,4 +130,4 @@ namespace PandoraEX
     };
 }
 
-#endif // SIZE_HPP
+#endif // VECTOR2_HPP

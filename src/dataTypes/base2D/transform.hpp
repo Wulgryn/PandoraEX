@@ -14,6 +14,12 @@
  *+ *=======================================================================
  *+ */
 
+/* ADD: transroms
+ *+ *=================================ADD===================================
+ *+ * DESCRIPTION: as separated: [pointMath,VectorMath] rotate,rotateAroundPoint,lerp,reflect,moveTowards,smoothDamp,setLength
+ *+ *=======================================================================
+ *+ */
+
 namespace PandoraEX::Base2D
 {
     template <class T>

@@ -3,7 +3,7 @@
 
 #include <exception>
 #include "dataTypes/string.hpp"
-namespace PandoraEX
+namespace PandoraEX::Exception
 {
     class Exception : public std::exception
     {
