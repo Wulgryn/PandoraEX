@@ -36,7 +36,7 @@ namespace PandoraEX::Base2D
 
         template <class U> U to()
         {
-            if (!std::is_base_of<Base2D<U>, U>::value) ThrowException(Exception::InvalidArgumentException, "Invalid type conversion from " + PandoraEX::Utils::clean_className(typeid(*this).name()) + " to " + PandoraEX::Utils::clean_className(typeid(U).name()));
+            if (!std::is_base_of<Base2D<U>, U>::value) ThrowException(Exceptions::InvalidArgumentException, "Invalid type conversion from " + PandoraEX::Utils::clean_className(typeid(*this).name()) + " to " + PandoraEX::Utils::clean_className(typeid(U).name()));
             return U(val1, val2);
         }
 
@@ -61,7 +61,7 @@ namespace PandoraEX::Base2D
         template <class U>
         operator U() const
         {
-            if (!std::is_base_of<Base2D<U>, U>::value) ThrowException(Exception::InvalidArgumentException, "Invalid type conversion from " + PandoraEX::Utils::clean_className(typeid(*this).name()) + " to " + PandoraEX::Utils::clean_className(typeid(U).name()));
+            if (!std::is_base_of<Base2D<U>, U>::value) ThrowException(Exceptions::InvalidArgumentException, "Invalid type conversion from " + PandoraEX::Utils::clean_className(typeid(*this).name()) + " to " + PandoraEX::Utils::clean_className(typeid(U).name()));
             return U(val1, val2);
         }
 
