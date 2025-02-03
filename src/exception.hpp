@@ -3,14 +3,16 @@
 
 #include <exception>
 #include "dataTypes/string.hpp"
-namespace PandoraEX::Exception
+namespace PandoraEX::Exceptions
 {
+    extern bool logExceptions;
     class Exception : public std::exception
     {
         String _message;
     public:
         Exception(String message = "An exception has occurred.") noexcept;
         Exception(String message, String exception_class ,String file, String line) noexcept;
+        Exception(String message ,String file, String line) noexcept;
         const char *what() const noexcept override;
 
         void print() const noexcept;

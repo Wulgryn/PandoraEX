@@ -31,6 +31,10 @@ namespace PandoraEX
 #pragma region OPERATORS
 
         String &operator=(const char *str);
+        // String &operator=(const String &str);
+
+        //String operator+(const unsigned char str);
+        //String operator+(const unsigned short str);
 
 /**=======================================================================================================================*
  **                                           END OF REGION OPERATORS

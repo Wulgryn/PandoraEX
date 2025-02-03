@@ -1,5 +1,7 @@
 #include "exception.hpp"
 
+#include "console/debugConsole.hpp"
+
 #include <iostream>
 
 #include <typeinfo>
@@ -8,32 +10,39 @@
 
 using namespace PandoraEX;
 
-Exception::Exception::Exception(String message) noexcept
+bool Exceptions::logExceptions = true;
+
+Exceptions::Exception::Exception(String message) noexcept
     : std::exception(), _message(message)
 {
 }
 
-PandoraEX::Exception::Exception::Exception(String message, String exception_class, String file, String line) noexcept
+PandoraEX::Exceptions::Exception::Exception(String message, String exception_class, String file, String line) noexcept
     : std::exception(), _message(exception_class + " -> "+ message + "\n  where: " + file + ":" + line)
 {
 }
 
-const char *Exception::Exception::what() const noexcept
+PandoraEX::Exceptions::Exception::Exception(String message, String file, String line) noexcept
+    : std::exception(), _message("Exception -> " + message + "\n  where: " + file + ":" + line)
+{
+}
+
+const char *Exceptions::Exception::what() const noexcept
 {
     return _message.c_str();
 }
 
-void Exception::Exception::print() const noexcept
+void Exceptions::Exception::print() const noexcept
 {
     std::cerr << _message << std::endl;
 }
 
-String Exception::Exception::message() const noexcept
+String Exceptions::Exception::message() const noexcept
 {
     return _message;
 }
 
-String Exception::Exception::className() const noexcept
+String Exceptions::Exception::className() const noexcept
 {
     int status = 0;
     std::unique_ptr<char[], void (*)(void *)> res{
@@ -42,7 +51,8 @@ String Exception::Exception::className() const noexcept
     return (status == 0) ? res.get() : typeid(*this).name();
 }
 
-void Exception::Exception::throw_()
+void Exceptions::Exception::throw_()
 {
+    if(logExceptions) DC::logException(_message);
     throw *this;
 }
